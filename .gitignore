@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+.idea/
+*.iml
+*.log
+reports/
+coverage/
+.sass-cache/
+bower_components/
+dist/
+fancycal.zip
+fancycal/
+dev/
+demo/

@@ -1,0 +1,43 @@
+<div class="fancycal-container">
+
+    <section>
+
+        <header>
+            <div class="error"></div>
+        </header>
+
+        <div class="fancycal-body">
+
+            <button class="prev" title="{{previousMonth}}">&laquo;</button>
+            <button class="next" title="{{nextMonth}}">&raquo;</button>
+
+            <div class="calendar-container">
+                <div class="calendar pull-left" id="calendar-one"></div>
+                <div class="calendar pull-right" id="calendar-two"></div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="row">
+                <p data-lang="travelduration">{{travelduration}}</p>
+                <div class="select">
+                    <label for="fancycal-select-duration"></label>
+                    <select id="fancycal-select-duration"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="select pull-left">
+                    <label for="fancycal-select-holidays"></label>
+                    <span class="flag holiday"></span>
+                    <select id="fancycal-select-holidays"></select>
+                </div>
+                <button class="btn done" data-lang="done">{{done}}</button>
+            </div>
+
+        </footer>
+
+    </section>
+
+</div>

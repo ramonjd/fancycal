@@ -1,0 +1,321 @@
+/*----------vars */
+$fc-red: #e21619;
+$fc-blue: #a0c8e6;
+$fc-light-blue: #dcf0ff;
+$fc-links: #73afdc;
+$fc-dark-blue: #092a5e;
+$fc-orange: #faaf00;
+$fc-yellow: #ffe100;
+$fc-green: #a0c800;
+$light-grey: #eee;
+$medium-grey: #ccc;
+
+$margin-bottom: 15px;
+
+/*---------- mixins */
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin flag {
+  display: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 15px 15px 0;
+  border-color: transparent $fc-orange transparent transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@mixin arrow-right {
+  display: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 13.0px;
+  border-color: transparent transparent transparent $fc-blue;
+  position: absolute;
+  top: 9px;
+  right: -10px;
+  left: auto;
+  z-index: 1001;
+}
+
+@mixin arrow-left {
+  border-width: 7.5px 13.0px 7.5px 0;
+  border-color: transparent $fc-green transparent transparent;
+  left: -10px;
+  right: auto;
+}
+
+@mixin bg-black-opaque($opacity: 0.5) {
+  background-color: rgba(0, 0, 0, $opacity);
+}
+
+/*----------throw away */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  color: black;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-size:1rem;
+  padding: 20px;
+  header,
+  footer,
+  fieldset,
+  section {
+    display: block;
+  }
+  h1 {
+    margin-bottom: $margin-bottom;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  /*---------- search form */
+
+  form {
+    display: block;
+    fieldset {
+      padding: 20px;
+      border: 1px solid $medium-grey;
+      background: #eee;
+      div {
+        background: white;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: inline-block;
+        &.departureDate {
+          button.departure-date {
+            background-color: $fc-blue !important;
+          }
+        }
+        &.returnDate {
+          button.return-date {
+            background-color: $fc-green !important;
+          }
+        }
+        button {
+          background-color: transparent;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+        &.active {
+          -webkit-box-shadow: inset 2px 2px 2px 0 #555;
+          -moz-box-shadow: inset 2px 2px 2px 0 #555;
+          box-shadow: inset 2px 2px 2px 0 #555;
+          border: 1px solid white;
+          button {
+            &.departure-date:hover {
+              background-color: $fc-blue;
+            }
+            &.return-date:hover {
+              background-color: $fc-green;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*---------- fancycal specific - this is the element that contains the calendars and ui elements */
+
+// icons
+
+.flag {
+  @include flag;
+}
+
+.arrow {
+  @include arrow-right;
+}
+
+// fancycal calendar
+
+.fancycal-container {
+  width: 460px;
+  display: none;
+  border: 1px solid $medium-grey;
+  border-width: 0 1px 1px 1px;
+  background: #eee;
+  padding: 0 20px;
+  position: absolute;
+  z-index: 100;
+  margin-top: -1px;
+  &.active {
+    display: block;
+  }
+  &.departureDate {
+    td.day.hover {
+      background-color: $fc-blue !important;
+      .arrow {
+        display: block;
+      }
+    }
+
+  }
+  &.returnDate {
+    td.day.hover {
+      background-color: $fc-green !important;
+      .arrow {
+        display: block;
+        @include arrow-left;
+      }
+    }
+  }
+  button {
+    cursor: pointer;
+  }
+  .fancycal-body {
+    margin-bottom: $margin-bottom;
+    position: relative;
+    padding-top: 10px;
+  }
+  header {
+    .error {
+      background-color: rgba(255, 227, 227, 0.9);
+      padding: 12px;
+      font-size: .8rem;
+      font-weight: bold;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+  .prev,
+  .next {
+    position: absolute;
+    top: 11px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 30px;
+    background-color: $fc-light-blue;
+  }
+  .next {
+    right: 0;
+  }
+  footer {
+    .row {
+      @include clearfix;
+      text-align: right;
+      margin-bottom: $margin-bottom;
+    }
+    button.done,
+    select {
+      background: white;
+      border: 1px solid $light-grey;
+      padding: 10px;
+      cursor: pointer;
+      font-size: .9rem;
+      border-radius: 5px;
+      width: 173px;
+    }
+    p {
+      display: inline-block;
+    }
+    .select {
+      display: inline-block;
+      position: relative;
+      .flag {
+        display: block;
+      }
+      select {
+        height: 40px;
+      }
+    }
+    button {
+
+    }
+  }
+}
+
+.calendar-container {
+  @include clearfix;
+  .calendar {
+    table {
+      text-align: center;
+      display: inline-table;
+      //border-collapse: collapse;
+    }
+    caption {
+      font-weight: bold;
+      margin-bottom: $margin-bottom;
+      background-color: $fc-light-blue;
+      padding: 8px 0;
+    }
+    th {
+      padding: 0;
+      padding-bottom: .3em;
+      font-size: .8rem;
+      font-weight: normal;
+    }
+    td {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      @include bg-black-opaque(0.1);
+      button {
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        background: transparent;
+        &:focus {
+          outline: none;
+        }
+      }
+      &.empty {
+        background: transparent;
+        button {
+          visibility: hidden;
+        }
+      }
+      &.disabled {
+        opacity: 0.2;
+      }
+      &.start-date {
+        background-color: $fc-blue !important;
+        .arrow {
+          display: block;
+        }
+      }
+      &.end-date {
+        background-color: $fc-green;
+        .arrow {
+          display: block;
+          @include arrow-left;
+        }
+      }
+      &.inrange {
+        background-color: $fc-light-blue;
+      }
+      &.holiday {
+        .flag {
+          display: block;
+        }
+      }
+    }
+  }
+}

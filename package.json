@@ -1,0 +1,40 @@
+{
+  "name": "fancycal",
+  "version": "0.0.1",
+  "description": "A calendar concept based on cross-market TUI UX requirements",
+  "author": "Ramon <ramonjames.dodd@tui.com>",
+  "license": "MIT",
+  "homepage": "http://fe-dev.tui-interactive.com:8080/tui-com/fancycal/tree/master",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-karma": "~0.8.3",
+    "grunt-contrib-jshint": "~0.10.0",
+    "karma": "~0.12.16",
+    "karma-coverage": "~0.2.4",
+    "grunt-contrib-compass": "~0.8.0",
+    "karma-jasmine": "~0.1.5",
+    "grunt-express": "~1.3.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-open": "~0.2.3",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "jshint-stylish": "~0.2.0",
+    "grunt-bower-task": "~0.3.4",
+    "karma-chrome-launcher": "~0.1.4",
+    "grunt-contrib-jasmine": "~0.6.5",
+    "grunt-preprocess": "~4.0.0",
+    "grunt-env": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-html-convert": "0.0.1",
+    "grunt-contrib-compress": "~0.9.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-concat": "~0.4.0"
+  },
+  "scripts": {
+    "test": "grunt karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://fe-dev.tui-interactive.com:8080/tui-com/fancycal"
+  }
+}

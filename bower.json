@@ -1,0 +1,23 @@
+{
+    "name": "fancycal",
+    "version": "0.0.0",
+    "authors": [],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "bower.json",
+        "src",
+        "*.txt"
+    ],
+    "dependencies": {
+        "jquery": "latest",
+        "modernizr": "~2.8.2"
+    },
+    "exportsOverride": {
+        "modernizr": {
+            "/": "modernizr.js"
+        }
+    }
+}

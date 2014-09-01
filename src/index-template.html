@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="<!-- @echo LOCALE -->">
+
+<!--
+
+    Fancycal Demo
+
+-->
+
+<head>
+    <title>Fancycal Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/fancycal.css" media="screen">
+    <script src="js/vendor/modernizr/modernizr.js"></script>
+    <!-- @if NODE_ENV='DEVELOPMENT' -->
+
+    <style>
+        #log {
+            font-size:.9rem;
+            margin:20px 0;
+            padding:10px;
+            border:1px solid #5890AD;
+            background-color: #eee;
+            width:350px;
+            position:fixed;
+            bottom:20px;
+            right:20px;
+        }
+
+        #log > h4 {
+            margin:10px;
+        }
+
+        #log > p {
+            margin:10px;
+            font-family: courier new, courier, monospace;
+        }
+
+    </style>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+
+    <!-- @endif -->
+</head>
+
+<body>
+
+<div id="main" class="container">
+
+    <h1>Fancycal Demo</h1>
+    <!-- @if NODE_ENV='DEVELOPMENT' -->
+    <div id="log">
+        <h4>Debugging mode</h4>
+        <p><strong>Depature date:</strong> <var id="log-departureDate"></var></p>
+        <p><strong>Return date:</strong> <var id="log-returnDate"></var></p>
+        <p><strong>Duration:</strong> <var id="log-duration"></var></p>
+        <p><strong>Diff:</strong> <var id="log-difference"></var></p>
+    </div>
+    <!-- @endif -->
+    <form>
+        <fieldset>
+            <div class="fancycal"></div>
+        </fieldset>
+    </form>
+
+
+</div>
+
+<script src="js/vendor/jquery/jquery.js"></script>
+<!-- @if NODE_ENV='DEVELOPMENT' -->
+<script src="/locale/<!-- @echo LOCALE -->/fc.settings.js"></script>
+<script src="js/fc.views.js"></script>
+<script src="js/fc.utils.js"></script>
+<script src="js/fc.calendar.js"></script>
+<script src="js/fc.fancycal.js"></script>
+<!-- @endif -->
+<!-- @if NODE_ENV='PRODUCTION' -->
+<script src="js/fc-core.js"></script>
+<script src="js/fc-calendar-bundle.js"></script>
+<!-- @endif -->
+
+<script>
+
+    // init general stuff here like form submission
+    $(function(){
+
+        //dom ready
+        var fancycal = new fc.fancycal().init();
+
+        <!-- @if NODE_ENV='DEVELOPMENT' -->
+
+        var $log = $('#log'),
+                $d = $('#log-departureDate'),
+                $r = $('#log-returnDate'),
+                $dur = $('#log-duration'),
+                $diff = $('#log-difference'),
+                travelData = fancycal.getValues(),
+                updateLog = function(){
+                    $d.text(travelData.departureDate);
+                    $r.text(travelData.returnDate);
+                    $dur.text(travelData.duration);
+                    $diff.text(tui.utils.getDaysInDateRange(travelData.departureDate, travelData.returnDate));
+                };
+
+        $('body').on('click', function(){
+            travelData = fancycal.getValues();
+            updateLog();
+        });
+
+        updateLog();
+
+        <!-- @endif -->
+    });
+
+</script>
+
+</body>
+</html>
